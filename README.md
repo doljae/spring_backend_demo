@@ -1,5 +1,5 @@
 # spring_backend_demo
-Project and environment setting snippet using eclipe & Spring(boot) 
+Project and environment setting snippet using eclipse(or Intellij) & Spring(boot) 
 
 ## 1. demo_mvc
 Dynamic Web Project -> Spring -> Spring MVC with JSP -> REST API Controller
