@@ -7,6 +7,9 @@ Dynamic Web Project -> Spring -> Spring MVC with JSP -> REST API Controller
 ## 2. demo_boot
 Spring Boot Starter(Initializer) -> Spring MVC with JSP -> REST API Controller
 
+## 3. demo_jwt
+demo_boot + REST API based Authentication using Spring Security & JWT
+
 ## Prerequisite
 
 ### Java Version
