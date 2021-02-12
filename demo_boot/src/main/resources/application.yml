@@ -1,0 +1,22 @@
+# WAS 서비스 포트 설정
+server:
+  port: 8888
+
+  servlet:
+    contextPath: /demo_boot
+
+# Spring 환경 설정
+spring: 
+  datasource: 
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/java_db?characterEncoding=UTF-8&serverTimezone=UTC
+    username: scott
+    password: tiger
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.example.demo.vo
+  
