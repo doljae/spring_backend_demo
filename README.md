@@ -10,6 +10,10 @@ Spring Boot Starter(Initializer) -> Spring MVC with JSP -> REST API Controller
 ## 3. demo_jwt
 demo_boot + REST API based Authentication using Spring Security & JWT
 
+## 4. demo_mail
+
+Spring Boot Starter(Initializer) -> PostgreSQL as a database ->  JPA with JpaRepository -> Spring Security with UserDetail(Service) -> Token Based Registration -> email authentication using MailDev
+
 ## Prerequisite
 
 ### Java Version
