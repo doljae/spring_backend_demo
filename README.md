@@ -14,6 +14,10 @@ demo_boot + REST API based Authentication using Spring Security & JWT
 
 Spring Boot Starter(Initializer) -> PostgreSQL as a database ->  JPA with JpaRepository -> Spring Security with UserDetail(Service) -> Token Based Registration -> email authentication using MailDev
 
+## 5. demo_oauth2_github([whiteship](https://www.whiteship.me/))
+
+Spring Boot Starter(Initializer) -> MariaDB as a database ->  JPA with JpaRepository -> Spring Security with OAuth2(default, github) -> input form test with thymeleaf
+
 ## Prerequisite
 
 ### Java Version
@@ -24,6 +28,7 @@ openjdk version "1.8.0_275"
 ### Used Database
 ```
 Server version: 10.5.8-MariaDB mariadb.org binary distribution
+port: 8080
 ```
 ### Database Schema
 ```sql

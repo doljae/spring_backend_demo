@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>이것은 form 잘 뜸</h1>
+<form th:object="${UserVo}" method="post" th:action="@{/form}">
+    <div>
+        <label for="name">이름</label>
+        <input id="name" th:type="text" th:field="*{name}">
+    </div>
+    <div>
+        <label for="address">주소</label>
+        <input id="address" th:type="text" th:field="*{address}">
+    </div>
+    <div>
+        <label for="zipCode">우편번호</label>
+        <input id="zipCode" th:type="text" th:field="*{zipCode}">
+    </div>
+    <div>
+        <label for="contactNumber">전화번호</label>
+        <input id="contactNumber" th:type="text" th:field="*{contactNumber}">
+    </div>
+    <div>
+        <label for="memo">메모</label>
+        <input id="memo" th:type="text" th:field="*{memo}">
+    </div>
+    <div>
+        <label for="size">사이즈</label>
+        <select id="size" th:field="*{size}">
+            <option th:value="S">S</option>
+            <option th:value="M">M</option>
+            <option th:value="L">L</option>
+            <option th:value="XL">XL</option>
+            <option th:value="XXL">XXL</option>
+        </select>
+    </div>
+    <div>
+        <input th:type="submit" title="입력"/>
+    </div>
+</form>
+</body>
+</html>
