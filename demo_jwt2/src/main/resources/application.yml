@@ -33,5 +33,5 @@ application:
   jwt:
     secretKey: securesecuresecuresecuresecuresecuresecuresecuresecuresecure
     tokenPrefix: Bearer
-    tokenExpirationAfterDays: 5
+    tokenExpirationAfterDays: -5
     refreshTokenExpirationAfterDays: 20

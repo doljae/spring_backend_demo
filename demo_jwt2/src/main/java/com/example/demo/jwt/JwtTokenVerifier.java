@@ -72,6 +72,7 @@ public class JwtTokenVerifier extends OncePerRequestFilter {
             // 현재 토큰이 만료가 되면 리프레시 토큰이 있는지 찾아봄
             // 유효한 리프레시 토큰이 db에 있으면 새로 토큰을 발급해서 헤더에 넣어줌
             System.out.println(e);
+			https://stackoverflow.com/questions/35791465/is-there-a-way-to-parse-claims-from-an-expired-jwt-token/35791515
             userid = e.getClaims().getSubject();
             System.out.println(userid);
             try {
