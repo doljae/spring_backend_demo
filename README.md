@@ -10,11 +10,15 @@ Spring Boot Starter(Initializer) -> Spring MVC with JSP -> REST API Controller
 ## 3. demo_jwt
 demo_boot + REST API based Authentication using Spring Security & JWT
 
-## 4. demo_mail
+## 4. demo_jwt2
+
+demo_jwt + Refresh Token with JPA
+
+## 5. demo_mail
 
 Spring Boot Starter(Initializer) -> PostgreSQL as a database ->  JPA with JpaRepository -> Spring Security with UserDetail(Service) -> Token Based Registration -> email authentication using MailDev
 
-## 5. demo_oauth2_github([whiteship](https://www.whiteship.me/))
+## 6. demo_oauth2_github([whiteship](https://www.whiteship.me/))
 
 Spring Boot Starter(Initializer) -> MariaDB as a database ->  JPA with JpaRepository -> Spring Security with OAuth2(default, github) -> input form test with thymeleaf
 
