@@ -22,6 +22,10 @@ Spring Boot Starter(Initializer) -> PostgreSQL as a database ->  JPA with JpaRep
 
 Spring Boot Starter(Initializer) -> MariaDB as a database ->  JPA with JpaRepository -> Spring Security with OAuth2(default, github) -> input form test with thymeleaf
 
+## 7. demo_oauth2_server
+
+Studying...
+
 ## Prerequisite
 
 ### Java Version
