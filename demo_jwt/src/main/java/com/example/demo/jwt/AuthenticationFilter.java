@@ -28,6 +28,10 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         this.authenticationManager = authenticationManager;
         this.jwtConfig = jwtConfig;
         this.secretKey = secretKey;
+        // UsernameAndPasswordAuthenticationFilter 주소 바꾸기
+        // 기본은 /login 이지만 이렇게 바꿔줄 수 있음
+        // https://stackoverflow.com/questions/45996726/changing-the-login-service-url-in-spring-security/50086521
+        setFilterProcessesUrl("/wow/yes/login");
     }
 
     @Override

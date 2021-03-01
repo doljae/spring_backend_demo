@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.todo.TodoMapper">
+
+    <select id="selectTodoList"
+        resultType="com.example.demo.todo.TodoVo">
+        select
+        id
+        , item
+        , completed
+        from todo
+        order by id;
+    </select>
+    <select id="selectTodo" parameterType="Long"
+        resultType="com.example.demo.todo.TodoVo">
+        select
+        id
+        , item
+        , completed
+        from todo
+        where id=#{id}
+    </select>
+
+    <insert id="insertTodo"
+        parameterType="com.example.demo.todo.TodoVo">
+        insert into
+        todo(item)
+        value (#{item})
+    </insert>
+    <update id="updateTodo"
+        parameterType="com.example.demo.todo.TodoVo">
+        update todo
+        set item=#{item}
+        , completed=#{completed}
+        where id=#{id}
+    </update>
+    <delete id="deleteTodo" parameterType="Long">
+        delete from todo where
+        id=#{id}
+    </delete>
+    <delete id="deleteAllTodo">
+        delete from todo
+    </delete>
+
+</mapper>

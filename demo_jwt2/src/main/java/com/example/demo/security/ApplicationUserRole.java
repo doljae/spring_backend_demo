@@ -7,19 +7,19 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.example.demo.security.AppplicationUserPermission.*;
+import static com.example.demo.security.ApplicationUserPermission.*;
 
 public enum ApplicationUserRole {
     USER(Sets.newHashSet(USER_READ)),
     ADMIN(Sets.newHashSet(USER_READ, USER_WRITE));
 
-    private final Set<AppplicationUserPermission> permissions;
+    private final Set<ApplicationUserPermission> permissions;
 
-    ApplicationUserRole(Set<AppplicationUserPermission> permissions) {
+    ApplicationUserRole(Set<ApplicationUserPermission> permissions) {
         this.permissions = permissions;
     }
 
-    public Set<AppplicationUserPermission> getPermissions() {
+    public Set<ApplicationUserPermission> getPermissions() {
         return permissions;
     }
 
