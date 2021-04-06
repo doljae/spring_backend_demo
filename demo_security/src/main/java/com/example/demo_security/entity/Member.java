@@ -1,10 +1,7 @@
 package com.example.demo_security.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.*;
@@ -15,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Table
+@ToString
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
