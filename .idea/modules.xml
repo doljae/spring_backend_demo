@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/demo_mvc/demo_mvc (1).iml" filepath="$PROJECT_DIR$/demo_mvc/demo_mvc (1).iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo_mvc2/demo_mvc (2).iml" filepath="$PROJECT_DIR$/demo_mvc2/demo_mvc (2).iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo_oauth2_server/demo_oauth2_server.iml" filepath="$PROJECT_DIR$/demo_oauth2_server/demo_oauth2_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/spring_backend_demo.iml" filepath="$PROJECT_DIR$/.idea/spring_backend_demo.iml" />
     </modules>
   </component>
 </project>
