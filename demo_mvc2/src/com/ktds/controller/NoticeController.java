@@ -16,56 +16,60 @@ import com.ktds.vo.NoticeVo;
 
 @Controller
 public class NoticeController {
-	@Autowired
-	NoticeService service;
-	
-	@GetMapping("/")
-	public String goList() {
-		return "list";
-	}
-	
-	@GetMapping("/list.do")
-	public ModelAndView getNoticeList() {
-		List<NoticeVo> notices=service.getNotices();
-		return new ModelAndView("list", "notices", notices);
-	}
-	@GetMapping("/write.do")
-	public String getWriteForm() {
-		return "writeForm";
-	}
-	@PostMapping("/write.do")
-	public String writeNotice(@ModelAttribute NoticeVo notice) {
-		int cnt = service.addNotice(notice);
-		if (cnt == 1)
-			return "redirect:/list.do";
-		return "redirect:/";
-	}
-	@GetMapping("/retrieve.do")
-	public ModelAndView getNoticeDetail(@RequestParam Long no) {
-		int cnt=service.updateCnt(no);
-		NoticeVo notice = service.getNotice(no);
-		System.out.println(notice);
-		return new ModelAndView("retrieve", "notice", notice);
-	}
-	
-	@PostMapping("/retrieve.do")
-	public String updateNotice(@RequestParam Long no, @ModelAttribute NoticeVo notice) {
-		System.out.println(no);
-		notice.setNo(no);
-		int cnt = service.updateNotice(notice);
-		System.out.println(cnt);
-		if (cnt == 1)
-			return "redirect:/list.do";
-		return "redirect:/";
+    @Autowired
+    NoticeService service;
 
-	}
-	@GetMapping("/noticeDelete.do")
-	public String deleteNotice(@RequestParam Long no) {
-		int cnt = service.deleteNotice(no);
-		if (cnt == 1)
-			return "redirect:/list.do";
-		return "redirect:/";
-	}
+    @GetMapping("/")
+    public String goList() {
+        return "list";
+    }
+
+    @GetMapping("/list.do")
+    public ModelAndView getNoticeList() {
+        List<NoticeVo> notices = service.getNotices();
+        return new ModelAndView("list", "notices", notices);
+    }
+
+    @GetMapping("/write.do")
+    public String getWriteForm() {
+        return "writeForm";
+    }
+
+    @PostMapping("/write.do")
+    public String writeNotice(@ModelAttribute NoticeVo notice) {
+        int cnt = service.addNotice(notice);
+        if (cnt == 1)
+            return "redirect:/list.do";
+        return "redirect:/";
+    }
+
+    @GetMapping("/retrieve.do")
+    public ModelAndView getNoticeDetail(@RequestParam Long no) {
+        int cnt = service.updateCnt(no);
+        NoticeVo notice = service.getNotice(no);
+        System.out.println(notice);
+        return new ModelAndView("retrieve", "notice", notice);
+    }
+
+    @PostMapping("/retrieve.do")
+    public String updateNotice(@RequestParam Long no, @ModelAttribute NoticeVo notice) {
+        System.out.println(no);
+        notice.setNo(no);
+        int cnt = service.updateNotice(notice);
+        System.out.println(cnt);
+        if (cnt == 1)
+            return "redirect:/list.do";
+        return "redirect:/";
+
+    }
+
+    @GetMapping("/noticeDelete.do")
+    public String deleteNotice(@RequestParam Long no) {
+        int cnt = service.deleteNotice(no);
+        if (cnt == 1)
+            return "redirect:/list.do";
+        return "redirect:/";
+    }
 //	@GetMapping("/userList.do")
 //	public ModelAndView getUserList() {
 //		List<UserVo> users = service.getUsers();

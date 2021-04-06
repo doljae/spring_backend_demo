@@ -8,34 +8,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dao.UserDao;
 import com.example.demo.vo.UserVo;
+
 @Service
 public class UserServiceImpl implements UserService {
-	@Autowired
-	UserDao dao;
-	@Override
-	public List<UserVo> getUsers() {
-		// TODO Auto-generated method stub
-		return dao.getUsers();
-	}
-	@Override
-	public UserVo getUser(String id) {
-		// TODO Auto-generated method stub
-		return dao.getUser(id);
-	}
-	@Override
-	public int addUser(UserVo user) {
-		// TODO Auto-generated method stub
-		return dao.addUser(user);
-	}
-	@Override
-	public int deleteUser(int id) {
-		// TODO Auto-generated method stub
-		return dao.deleteUser(id);
-	}
-	@Override
-	public int updateUser(UserVo user) {
-		// TODO Auto-generated method stub
-		return dao.updateUser(user);
-	}
+    @Autowired
+    UserDao dao;
+
+    @Override
+    public List<UserVo> getUsers() {
+        // TODO Auto-generated method stub
+        return dao.getUsers();
+    }
+
+    @Override
+    public UserVo getUser(String id) {
+        // TODO Auto-generated method stub
+        return dao.getUser(id);
+    }
+
+    @Override
+    public int addUser(UserVo user) {
+        // TODO Auto-generated method stub
+        return dao.addUser(user);
+    }
+
+    @Override
+    public int deleteUser(int id) {
+        // TODO Auto-generated method stub
+        return dao.deleteUser(id);
+    }
+
+    @Override
+    public int updateUser(UserVo user) {
+        // TODO Auto-generated method stub
+        return dao.updateUser(user);
+    }
 
 }

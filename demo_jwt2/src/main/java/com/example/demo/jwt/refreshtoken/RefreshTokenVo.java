@@ -19,7 +19,7 @@ public class RefreshTokenVo {
     @NotEmpty
     private String userid;
     @NotEmpty
-    @Column( length = 100000 )
+    @Column(length = 100000)
     private String tokenValue;
 
     public RefreshTokenVo() {

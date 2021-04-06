@@ -18,37 +18,37 @@ import com.example.demo.vo.UserVo;
 @RestController
 @RequestMapping("/api/user")
 public class UserRestController {
-	@Autowired
-	UserService service;
+    @Autowired
+    UserService service;
 
-	@GetMapping("")
-	public List<UserVo> getUsers() {
-		System.out.println(1);
-		List<UserVo> users = service.getUsers();
-		return users;
-	}
+    @GetMapping("")
+    public List<UserVo> getUsers() {
+        System.out.println(1);
+        List<UserVo> users = service.getUsers();
+        return users;
+    }
 
-	@GetMapping("/{id}")
-	public UserVo getUser(@PathVariable String id) {
-		UserVo user = service.getUser(id);
-		return user;
-	}
+    @GetMapping("/{id}")
+    public UserVo getUser(@PathVariable String id) {
+        UserVo user = service.getUser(id);
+        return user;
+    }
 
-	@PostMapping
-	public int addUser(@RequestBody UserVo user) {
-		int cnt = service.addUser(user);
-		return cnt;
-	}
+    @PostMapping
+    public int addUser(@RequestBody UserVo user) {
+        int cnt = service.addUser(user);
+        return cnt;
+    }
 
-	@DeleteMapping("/{id}")
-	public int deleteUser(@PathVariable int id) {
-		int cnt = service.deleteUser(id);
-		return cnt;
-	}
+    @DeleteMapping("/{id}")
+    public int deleteUser(@PathVariable int id) {
+        int cnt = service.deleteUser(id);
+        return cnt;
+    }
 
-	@PutMapping
-	public int updateUser(@RequestBody UserVo user) {
-		int cnt = service.updateUser(user);
-		return cnt;
-	}
+    @PutMapping
+    public int updateUser(@RequestBody UserVo user) {
+        int cnt = service.updateUser(user);
+        return cnt;
+    }
 }

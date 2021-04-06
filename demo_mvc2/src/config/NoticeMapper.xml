@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ktds.mapper.NoticeMapper">
-	<select id="getNotices" resultType="Notice">
-		select * from notice order by writeday desc
-	</select>
+    <select id="getNotices" resultType="Notice">
+        select * from notice order by writeday desc
+    </select>
 
-	<select id="getNotice" parameterType="Long" resultType="Notice">
-		select *
-		from notice where no =#{no}
-	</select>
+    <select id="getNotice" parameterType="Long" resultType="Notice">
+        select *
+        from notice where no =#{no}
+    </select>
 
-	<insert id="addNotice" parameterType="Notice">
-		insert into
-		notice(title,author,content)
-		values(#{title},#{author},#{content})
-	</insert>
+    <insert id="addNotice" parameterType="Notice">
+        insert into
+        notice(title,author,content)
+        values(#{title},#{author},#{content})
+    </insert>
 
-	<delete id="deleteNotice" parameterType="Long">
-		delete from notice where
-		no=#{no}
-	</delete>
+    <delete id="deleteNotice" parameterType="Long">
+        delete from notice where
+        no=#{no}
+    </delete>
 
-	<update id="updateNotice" parameterType="Notice">
-		update notice set
-		title=#{title},author=#{author},content=#{content}
-		where no=#{no}
-	</update>
-	
-	<update id="updateCnt" parameterType="Long">
-		update notice set
-		readcnt=readcnt+1
-		where no=#{no}
-	</update>
+    <update id="updateNotice" parameterType="Notice">
+        update notice set
+        title=#{title},author=#{author},content=#{content}
+        where no=#{no}
+    </update>
+
+    <update id="updateCnt" parameterType="Long">
+        update notice set
+        readcnt=readcnt+1
+        where no=#{no}
+    </update>
 </mapper>

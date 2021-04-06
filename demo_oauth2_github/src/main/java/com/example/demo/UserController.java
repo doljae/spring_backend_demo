@@ -24,6 +24,7 @@ public class UserController {
 
     private final UserVoRepository repository;
     private final ModelMapper modelMapper;
+
     // localhost:8080
     @GetMapping("/")
     public String goIndex(Model model) {

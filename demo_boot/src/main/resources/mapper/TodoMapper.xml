@@ -4,7 +4,7 @@
 <mapper namespace="com.example.demo.todo.TodoMapper">
 
     <select id="selectTodoList"
-        resultType="com.example.demo.todo.TodoVo">
+            resultType="com.example.demo.todo.TodoVo">
         select
         id
         , item
@@ -13,7 +13,7 @@
         order by id;
     </select>
     <select id="selectTodo" parameterType="Long"
-        resultType="com.example.demo.todo.TodoVo">
+            resultType="com.example.demo.todo.TodoVo">
         select
         id
         , item
@@ -23,13 +23,13 @@
     </select>
 
     <insert id="insertTodo"
-        parameterType="com.example.demo.todo.TodoVo">
+            parameterType="com.example.demo.todo.TodoVo">
         insert into
         todo(item)
         value (#{item})
     </insert>
     <update id="updateTodo"
-        parameterType="com.example.demo.todo.TodoVo">
+            parameterType="com.example.demo.todo.TodoVo">
         update todo
         set item=#{item}
         , completed=#{completed}

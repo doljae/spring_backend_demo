@@ -7,39 +7,40 @@ import org.springframework.stereotype.Repository;
 
 import com.ktds.mapper.UserMapper;
 import com.ktds.vo.UserVo;
+
 @Repository
 public class UserDaoImpl implements UserDao {
-	@Autowired
-	UserMapper mapper;
-	
-	@Override
-	public List<UserVo> getUsers() {
-		// TODO Auto-generated method stub
-		return mapper.getUsers();
-	}
+    @Autowired
+    UserMapper mapper;
 
-	@Override
-	public UserVo getUser(String id) {
-		// TODO Auto-generated method stub
-		return mapper.getUser(id);
-	}
+    @Override
+    public List<UserVo> getUsers() {
+        // TODO Auto-generated method stub
+        return mapper.getUsers();
+    }
 
-	@Override
-	public int addUser(UserVo user) {
-		// TODO Auto-generated method stub
-		return mapper.addUser(user);
-	}
+    @Override
+    public UserVo getUser(String id) {
+        // TODO Auto-generated method stub
+        return mapper.getUser(id);
+    }
 
-	@Override
-	public int deleteUser(int id) {
-		// TODO Auto-generated method stub
-		return mapper.deleteUser(id);
-	}
+    @Override
+    public int addUser(UserVo user) {
+        // TODO Auto-generated method stub
+        return mapper.addUser(user);
+    }
 
-	@Override
-	public int updateUser(UserVo user) {
-		// TODO Auto-generated method stub
-		return mapper.updateUser(user);
-	}
+    @Override
+    public int deleteUser(int id) {
+        // TODO Auto-generated method stub
+        return mapper.deleteUser(id);
+    }
+
+    @Override
+    public int updateUser(UserVo user) {
+        // TODO Auto-generated method stub
+        return mapper.updateUser(user);
+    }
 
 }

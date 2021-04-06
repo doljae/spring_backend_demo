@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public class RegistrationController {
     private final RegistrationService registrationService;
 
-	// localhost:8081/api/v1/registration
+    // localhost:8081/api/v1/registration
 	/*
 	{
 		"firstName": "name1",
@@ -23,7 +23,7 @@ public class RegistrationController {
         return registrationService.register(request);
     }
 
-	// localhost:8081/api/v1/registration/confirm?token=APP_USER_TOKEN
+    // localhost:8081/api/v1/registration/confirm?token=APP_USER_TOKEN
     @GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token) {
         return registrationService.confirmToken(token);

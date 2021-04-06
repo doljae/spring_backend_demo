@@ -6,8 +6,8 @@ server:
     contextPath: /demo_boot
 
 # Spring 환경 설정
-spring: 
-  datasource: 
+spring:
+  datasource:
     driverClassName: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://localhost:3306/java_db?characterEncoding=UTF-8&serverTimezone=UTC
     username: scott
