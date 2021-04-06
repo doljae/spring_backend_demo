@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d10fb57c-09a4-4db0-a08e-1b24ef2ee93f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/demo_security/src/main/java/com/example/demo_security/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo_security/src/main/java/com/example/demo_security/config/SecurityConfig.java" afterDir="false" />
-    </list>
+    <list default="true" id="d10fb57c-09a4-4db0-a08e-1b24ef2ee93f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +43,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617686987838</updated>
       <workItem from="1617686990965" duration="667000" />
-      <workItem from="1617688572299" duration="314000" />
+      <workItem from="1617688572299" duration="598000" />
     </task>
     <servers />
   </component>

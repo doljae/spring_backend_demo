@@ -32,6 +32,10 @@ default, github) -> input form test with thymeleaf
 
 Studying...
 
+## 8. demo_security
+
+Spring Secuity practice based on official documentation
+
 ## Prerequisite
 
 ### Java Version
