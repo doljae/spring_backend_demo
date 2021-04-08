@@ -1,5 +1,6 @@
 package com.example.demo_security.security;
 
+import lombok.AllArgsConstructor;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Set;
 
+@AllArgsConstructor
 @ToString
 public class MemberUserDetail implements UserDetails {
     private final String username;
@@ -16,17 +18,6 @@ public class MemberUserDetail implements UserDetails {
     private final boolean isAccountNonLocked;
     private final boolean isCredentialsNonExpired;
     private final boolean isEnabled;
-
-
-    public MemberUserDetail(String username, String password, Set<? extends GrantedAuthority> grantedAuthorities, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean isEnabled) {
-        this.username = username;
-        this.password = password;
-        this.grantedAuthorities = grantedAuthorities;
-        this.isAccountNonExpired = isAccountNonExpired;
-        this.isAccountNonLocked = isAccountNonLocked;
-        this.isCredentialsNonExpired = isCredentialsNonExpired;
-        this.isEnabled = isEnabled;
-    }
 
 
     @Override

@@ -31,3 +31,9 @@ logging:
   level:
     org.hibernate.SQL: trace
     org.hibernate.type: trace
+
+application:
+  jwt:
+    secretKey: thisiskeyforsecuritythisiskeyforsecuritythisiskeyforsecurity
+    tokenPrefix: "Bearer "
+    tokenExpirationAfterDays: 10
