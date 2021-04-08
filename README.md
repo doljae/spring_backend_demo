@@ -34,7 +34,7 @@ Studying...
 
 ## 8. demo_security
 
-Spring Secuity practice based on official documentation
+Spring Secuity practice based on official documents & repos with good samples
 
 ## Prerequisite
 
