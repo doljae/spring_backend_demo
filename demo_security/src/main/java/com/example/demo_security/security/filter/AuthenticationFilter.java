@@ -38,6 +38,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         //return super.attemptAuthentication(request, response);
         // 이것을 풀어서 쓰면 다음과 같음
         try {
+            System.out.println(request.getInputStream());
             LoginRequest loginRequest = new ObjectMapper().readValue(request.getInputStream(), LoginRequest.class);
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                     loginRequest.getUsername(),

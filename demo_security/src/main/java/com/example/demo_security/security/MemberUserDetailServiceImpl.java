@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import static com.example.demo_security.security.MemberRole.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +43,7 @@ public class MemberUserDetailServiceImpl implements MemberUserDetailService {
             MemberUserDetail memberUserDetail = new MemberUserDetail(
                     member.getUsername(),
                     passwordEncoder.encode(member.getPassword()),
-                    null,
+                    member.getUsername().equals("seokjae") ? ADMIN.getGrantedAuthorities() : USER.getGrantedAuthorities(),
                     true,
                     true,
                     true,
