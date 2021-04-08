@@ -20,6 +20,7 @@ public class DemoSecurityApplication implements CommandLineRunner {
         SpringApplication.run(DemoSecurityApplication.class, args);
     }
 
+    // test
     // https://pasudo123.tistory.com/394
     @Override
     public void run(String... args) throws Exception {
