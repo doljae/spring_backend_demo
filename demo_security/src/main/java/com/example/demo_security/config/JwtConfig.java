@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class JwtConfig {
     private String secretKey;
     private String tokenPrefix;
-    private String tokenExpirationAfterDays;
+    private Integer tokenExpirationAfterDays;
 
     public String getAuthorizationHeader() {
         return HttpHeaders.AUTHORIZATION;
