@@ -65,10 +65,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    @Bean
-    public AuthenticationManager getAuthenticationManager() throws Exception {
-        return authenticationManager();
-    }
+//    @Bean
+//    public AuthenticationManager getAuthenticationManager() throws Exception {
+//        return authenticationManager();
+//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
