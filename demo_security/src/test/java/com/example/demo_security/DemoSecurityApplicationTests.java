@@ -1,6 +1,7 @@
 package com.example.demo_security;
 
 import com.example.demo_security.security.MemberUserDetailService;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,11 +20,11 @@ class DemoSecurityApplicationTests {
     @Autowired
     AuthenticationManagerBuilder authenticationManagerBuilder;
 
-    @Test
+    @Test @Ignore
     void contextLoads() {
         System.out.println(memberUserDetailService.loadUserByUsername("seokjae"));
     }
-    @Test
+    @Test @Ignore
     void contextLoads2(){
         System.out.println(authenticationManagerBuilder.getDefaultUserDetailsService());
     }

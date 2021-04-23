@@ -30,6 +30,11 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final JwtConfig jwtConfig;
     private final SecretKey secretKey;
 
+//    @Override
+//    public void setFilterProcessesUrl(String filterProcessesUrl) {
+//        super.setFilterProcessesUrl(filterProcessesUrl);
+//    }
+
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
