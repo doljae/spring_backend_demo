@@ -35,9 +35,9 @@ public class JwtVerifyingFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         String authorizationHeader = request.getHeader(jwtConfig.getAuthorizationHeader());
-        if (Strings.isNullOrEmpty(authorizationHeader) || !authorizationHeader.startsWith(jwtConfig.getTokenPrefix())) {
-
-        } else {
+        // AUTHORIZATION 헤더가 비어있지않고, 그 헤더의 prefix가 지정한 prefix와 같아면
+        // 토큰을 파싱해 Authentication 객체를 만들어 SecurityContext에 넣어준다.
+        if (!Strings.isNullOrEmpty(authorizationHeader) && authorizationHeader.startsWith(jwtConfig.getTokenPrefix())) {
             String token = authorizationHeader.replace(jwtConfig.getTokenPrefix(), "");
             try {
                 Jws<Claims> claimsJws = Jwts.parserBuilder()
@@ -59,13 +59,12 @@ public class JwtVerifyingFilter extends OncePerRequestFilter {
                 );
                 SecurityContextHolder.getContext().setAuthentication(authentication);
 
+
             } catch (JwtException e) {
                 throw new IllegalStateException(String.format("Token %s cannot be trusted", token));
-            } finally {
-                filterChain.doFilter(request, response);
             }
         }
-
-
+        // 아무튼 다음 스텝으로 넘겨야하니깐 꼭 적어줄 것
+        filterChain.doFilter(request, response);
     }
 }

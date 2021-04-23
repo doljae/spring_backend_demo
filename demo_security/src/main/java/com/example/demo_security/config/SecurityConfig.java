@@ -2,6 +2,7 @@ package com.example.demo_security.config;
 
 import com.example.demo_security.security.MemberUserDetailService;
 import com.example.demo_security.security.filter.AuthenticationFilter;
+import com.example.demo_security.security.filter.JwtVerifyingFilter;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,11 +15,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.header.writers.StaticHeadersWriter;
+import org.springframework.security.web.header.writers.frameoptions.WhiteListedAllowFromStrategy;
+import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 
 import static com.example.demo_security.security.MemberRole.*;
 
 
 import javax.crypto.SecretKey;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -39,22 +45,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
+    // https://github.com/HomoEfficio/dev-tips/blob/master/Spring%20Security%EC%99%80%20h2-console%20%ED%95%A8%EA%BB%98%20%EC%93%B0%EA%B8%B0.md
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf()
-                .disable();
-        //.headers()
-        //.frameOptions().disable();
+                .ignoringAntMatchers("/h2-console/**");
+        // https://gigas-blog.tistory.com/124
+        // disable은 x-frame-options를 비활성화한다 -> 보안 취약
+        // sameorigin은 동일 도메인에선 iframe 접근을 허용한다 -> localhost 테스팅용
+        // 커스터마이징하면 아래와 같이쓴다.
+        // 접속은 되는데 콘솔에서 에러가 뜨네;
+        // 그냥 sameOrigin으로 해서 쓰고 나중에 다시 찾아봅시다
+        http
+                .headers()
+                .frameOptions()
+                .disable()
+                .addHeaderWriter(new StaticHeadersWriter("X-FRAME-OPTIONS", "ALLOW-FROM " + "localhost:8080/**"));
         http
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http
                 .addFilter(new AuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
-                //.addFilterAfter(new JwtVerifyingFilter(), AuthenticationFilter.class)
+                .addFilterAfter(new JwtVerifyingFilter(secretKey, jwtConfig), AuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/h2-console").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/api/**").hasRole(ADMIN.name())
                 .anyRequest()
                 .authenticated();
