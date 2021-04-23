@@ -29,10 +29,12 @@ public class MemberUserDetailServiceImpl implements MemberUserDetailService {
     }
 
     public Optional<MemberUserDetail> selectMemberUserDetailByUsername(String username) {
-        return getMemberUserDetails(username)
+        Optional<MemberUserDetail> memberUserDetaill = getMemberUserDetails(username)
                 .stream()
                 .filter(memberUserDetail -> username.equals(memberUserDetail.getUsername()))
                 .findFirst();
+        System.out.println(memberUserDetaill);
+        return memberUserDetaill;
     }
 
 
@@ -40,6 +42,7 @@ public class MemberUserDetailServiceImpl implements MemberUserDetailService {
         List<Member> members = memberRepository.findByUsername(username);
         List<MemberUserDetail> memberUserDetails = new ArrayList<>();
         for (Member member : members) {
+            System.out.println(member);
             MemberUserDetail memberUserDetail = new MemberUserDetail(
                     member.getUsername(),
                     passwordEncoder.encode(member.getPassword()),
@@ -49,8 +52,10 @@ public class MemberUserDetailServiceImpl implements MemberUserDetailService {
                     true,
                     true
             );
+
             memberUserDetails.add(memberUserDetail);
         }
+        System.out.println(memberUserDetails);
         return memberUserDetails;
     }
 }

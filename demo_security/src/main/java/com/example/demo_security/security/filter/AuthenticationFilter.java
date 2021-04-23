@@ -42,6 +42,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         //이 한줄이면 request에서 username, password값 만들어서 Authentication 만들어서 SecurityContext에 넣어줌
         //return super.attemptAuthentication(request, response);
         // 이것을 풀어서 쓰면 다음과 같음
+        System.out.println(request);
         try {
             System.out.println(request.getInputStream());
             LoginRequest loginRequest = new ObjectMapper().readValue(request.getInputStream(), LoginRequest.class);
@@ -66,7 +67,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         // super.successfulAuthentication(request, response, chain, authResult);
         // attemptAuthentication()에서 정상적으로 처리되어 Authentication이 반환되면
         // Jwt를 만들어 response 헤더에 넣어서 반환한다
-
+        System.out.println(authResult);
+        System.out.println(authResult.getAuthorities());
         String token = Jwts.builder()
                 .setSubject(authResult.getName())
                 .claim("authorities", authResult.getAuthorities())

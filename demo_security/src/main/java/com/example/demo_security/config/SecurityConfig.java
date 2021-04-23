@@ -49,8 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf()
-                .ignoringAntMatchers("/h2-console/**");
+                .csrf().disable();
+        //.ignoringAntMatchers("/h2-console/**");
         // https://gigas-blog.tistory.com/124
         // disable은 x-frame-options를 비활성화한다 -> 보안 취약
         // sameorigin은 동일 도메인에선 iframe 접근을 허용한다 -> localhost 테스팅용
@@ -60,16 +60,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .headers()
                 .frameOptions()
-                .disable()
-                .addHeaderWriter(new StaticHeadersWriter("X-FRAME-OPTIONS", "ALLOW-FROM " + "localhost:8080/**"));
+                .sameOrigin();
+//                .addHeaderWriter(new StaticHeadersWriter("X-FRAME-OPTIONS", "ALLOW-FROM " + "localhost:8080/**"));
         http
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        //authenticated()는 인증되어야 한다는 뜻임
+        //그러니깐 anyRequest()는 위에 antMatchers에 걸리는 URI 말고는 전부 인증되지않으면
+        // 403 띄우라는 뜻입니다.
         http
                 .addFilter(new AuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
                 .addFilterAfter(new JwtVerifyingFilter(secretKey, jwtConfig), AuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/login").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/api/**").hasRole(ADMIN.name())
                 .anyRequest()

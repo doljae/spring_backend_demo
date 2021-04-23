@@ -20,9 +20,11 @@ public class MemberUserDetail implements UserDetails {
     private final boolean isEnabled;
 
 
+    // 코드 미리 작성해놓고 빨간줄 없애놓으려다가 null 리턴하고 있었음...
+    // 주의합시다
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.grantedAuthorities;
     }
 
     @Override
