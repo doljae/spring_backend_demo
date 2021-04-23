@@ -76,7 +76,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .addFilter(new AuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
                 .addFilterAfter(new JwtVerifyingFilter(secretKey, jwtConfig), AuthenticationFilter.class)
-                // .addFilterAfter(new RememberMeAuthenticationFilter())
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()

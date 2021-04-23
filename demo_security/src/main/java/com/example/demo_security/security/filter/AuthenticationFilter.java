@@ -7,16 +7,20 @@ import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 
 import javax.crypto.SecretKey;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -30,11 +34,14 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final JwtConfig jwtConfig;
     private final SecretKey secretKey;
 
-//    @Override
+    //    @Override
 //    public void setFilterProcessesUrl(String filterProcessesUrl) {
 //        super.setFilterProcessesUrl(filterProcessesUrl);
 //    }
 
+    // form based login 기능이 아닌
+    // REST API 로그인, 즉 json으로 데이터를 body에 받아서 그 username, password를 입력받는 방식임
+    // 당연히 form based로 하면 request 객체에 아무것도 없기 마련임 -> 굉장히 오래 삽질했음 또...
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
@@ -42,9 +49,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         //이 한줄이면 request에서 username, password값 만들어서 Authentication 만들어서 SecurityContext에 넣어줌
         //return super.attemptAuthentication(request, response);
         // 이것을 풀어서 쓰면 다음과 같음
-        System.out.println(request);
         try {
-            System.out.println(request.getInputStream());
             LoginRequest loginRequest = new ObjectMapper().readValue(request.getInputStream(), LoginRequest.class);
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                     loginRequest.getUsername(),
