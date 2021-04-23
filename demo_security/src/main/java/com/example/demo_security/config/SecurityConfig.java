@@ -14,7 +14,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter;
 import org.springframework.security.web.header.writers.StaticHeadersWriter;
 import org.springframework.security.web.header.writers.frameoptions.WhiteListedAllowFromStrategy;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
@@ -23,6 +26,8 @@ import static com.example.demo_security.security.MemberRole.*;
 
 
 import javax.crypto.SecretKey;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -71,6 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .addFilter(new AuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
                 .addFilterAfter(new JwtVerifyingFilter(secretKey, jwtConfig), AuthenticationFilter.class)
+                // .addFilterAfter(new RememberMeAuthenticationFilter())
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
