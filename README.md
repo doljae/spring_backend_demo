@@ -35,6 +35,7 @@ Studying...
 ## 8. demo_security
 
 Spring Secuity practice based on official documents & repos with good samples
+(UsernamePasswordAuthenticationFilter -> JwtTokenVerifier(OncePerRequestFilter) -> RememberMeFilter(Progressing)
 
 ## Prerequisite
 
